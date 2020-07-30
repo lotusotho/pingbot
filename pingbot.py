@@ -1,18 +1,15 @@
-import platform, subprocess, random, socket, struct, mysql.connector    # For getting the operating system name # For executing a shell command
+import platform, subprocess, random, socket, struct, mysql.connector
 from dns import reversename, resolver, exception
 idip = 0
 sqlconnection = mysql.connector.connect(user='root', password='', host='127.0.0.1', database='worldping')
-#nm = nmap.PortScanner()
+
 while True:
     host = socket.inet_ntoa(struct.pack('>I', random.randint(1, 0xffffffff)))
     '0.0.0.1'
     host = socket.inet_ntoa(struct.pack('>I', random.randint(1, 0xffffffff)))
     '255.255.255.254'
-  # For executing a shell command
-    os = platform.system().lower()
 
-    #nmap scan
-    #status,result = nm.scan(host, "25565")
+    os = platform.system().lower()
 
     status,result = subprocess.getstatusoutput("ping -c1 -w2 " + host)
 
